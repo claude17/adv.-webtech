@@ -1,0 +1,20 @@
+import { Module } from "@nestjs/common";
+import { CustomerController } from "./customer.controller";
+import { CustomerService } from "./customer.service";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { CustomerEntity } from "./customer.entity";
+import { AuthService } from "./auth/auth.service";
+import { ProductEntity } from "src/product/product.entity";
+import { CartEntity } from "src/cart/cart.entity";
+import { OrderEntity } from "src/order/order.entity";
+
+
+
+
+@Module({
+    imports: [TypeOrmModule.forFeature([CustomerEntity,ProductEntity,CartEntity,OrderEntity]),],
+    controllers: [CustomerController],
+    providers: [CustomerService],
+    exports: [CustomerService],
+  })
+  export class CustomerModule {}
